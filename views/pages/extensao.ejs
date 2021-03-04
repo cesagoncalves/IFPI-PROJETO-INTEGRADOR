@@ -1,0 +1,112 @@
+<%- contentFor('main') %>
+    <section class="atividades" id="main">
+        <div class="atividades-content">
+            <div class="conteudo-container">
+                <div class="lista-atividades">
+                    <div class="atividades-titulos">
+                        <h2>Atividades de Extensão</h2>
+                        <div class="btn-box">
+                            <a href="/postAEs"><button>CRIAR NOVO ARQUIVO</button></a>
+                        </div>
+                        <div class="text-actions">
+                            <h4>Nome</h4>
+                            <h4>Data de Upload</h4>
+                        </div>
+                    </div>
+
+                    <button class="accordion">
+                        <i class="bx bxs-folder-open"></i>Programa
+                        </button>
+                    <div class="panel">
+                        <% certificados.forEach(function(certificado){ %>
+                            <% if (certificado.categoria_atividade == 'Programa') {%>
+                                <div class="panel-documentos">
+                                    <div class="text-documents">
+                                        <span><i class='bx bxs-file-pdf'></i><%= certificado.chave %></span>
+                                        <span><%= certificado.criado_em %></span>
+                                    </div>
+                                </div>
+                                <% }}); %>
+
+
+                    </div>
+
+                    <button class="accordion">
+                <i class="bx bxs-folder-open"></i>Projeto
+              </button>
+                    <div class="panel">
+                        <% certificados.forEach(function(certificado){ %>
+                            <% if (certificado.categoria_atividade == 'Projeto') {%>
+                                <div class="panel-documentos">
+                                    <div class="text-documents">
+                                        <span><i class='bx bxs-file-pdf'></i><%= certificado.chave %></span>
+                                        <span><%= certificado.criado_em %></span>
+                                    </div>
+                                </div>
+                                <% }}); %>
+                    </div>
+
+                    <button class="accordion">
+                <i class="bx bxs-folder-open"></i>Curso
+              </button>
+                    <div class="panel">
+                        <% certificados.forEach(function(certificado){ %>
+                            <% if (certificado.categoria_atividade == 'Curso') {%>
+                                <div class="panel-documentos">
+                                    <div class="text-documents">
+                                        <span><i class='bx bxs-file-pdf'></i><%= certificado.chave %></span>
+                                        <span><%= certificado.criado_em %></span>
+                                    </div>
+                                </div>
+                                <% }}); %>
+                    </div>
+
+                    <button class="accordion">
+                <i class="bx bxs-folder-open"></i>Evento
+              </button>
+                    <div class="panel">
+                        <% certificados.forEach(function(certificado){ %>
+                            <% if (certificado.categoria_atividade == 'Programa') {%>
+                                <div class="panel-documentos">
+                                    <div class="text-documents">
+                                        <span><i class='bx bxs-file-pdf'></i><%= certificado.chave %></span>
+                                        <span><%= certificado.criado_em %></span>
+                                    </div>
+                                </div>
+                                <% }}); %>
+                    </div>
+
+                    <button class="accordion">
+                <i class="bx bxs-folder-open"></i>Prestação de Serviço
+              </button>
+                    <div class="panel">
+                        <% certificados.forEach(function(certificado){ %>
+                            <% if (certificado.categoria_atividade == 'Prestação de Serviço') {%>
+                                <div class="panel-documentos">
+                                    <div class="text-documents">
+                                        <span><i class='bx bxs-file-pdf'></i><%= certificado.chave %></span>
+                                        <span><%= certificado.criado_em %></span>
+                                    </div>
+                                </div>
+                                <% }}); %>
+                    </div>
+
+                </div>
+
+            </div>
+            <div id="aba-preview" class="preview">
+                <div class="preview-box"></div>
+                <img src="images/Exemplo.png" alt="" />
+                <span>Nome: Evento - 1</span>
+                <span>Tamanho: 1.01 MB:</span>
+                <button class="btn-download">Download</button>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+    </main>
+    <script src="/public/js/javascript.js"></script>
+    </body>
+
+    </html>

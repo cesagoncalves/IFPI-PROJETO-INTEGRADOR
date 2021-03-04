@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="stylesheet" href="/Style/csspages/cadastro.css">
+</head>
+
+<body id="cadastro">
+    <div id="container">
+        <div class="form">
+            <div class="back-box">
+                <a href="/"><img src="Images/arrow.svg" alt=""></a>
+            </div>
+            <h1>Cadastro</h1>
+            <p>Preencha com seus dados o formulario abaixo para realizar seu cadastro</p>
+            <form action="/cadastrar" method="POST">
+                <div class="input-group">
+                    <label for="">Nome</label>
+                    <input type="text" name="nome" id="">
+                    <label for="">Sobrenome</label>
+                    <input type="text" name="sobrenome" id="">
+                    <label for="">E-mail</label>
+                    <input type="email" name="email" id="">
+                    <label for="">CPF</label>
+                    <input type="text" name="cpf" id="">
+                    <label for="">Data de Nascimento</label>
+                    <input type="date" name="nascimento" id="">
+                    <label for="">Telefone</label>
+                    <input type="text" name="telefone" id="">
+                    <label for="">Instituição</label>
+                    <input type="text" name="instituicao" id="">
+                    <label for="">Cidade</label>
+                    <input type="text" name="cidade" id="">
+                    <label for="">Senha</label>
+                    <input type="password" name="senha" id="">
+                    <label for="">Repita a Senha</label>
+                    <input type="password" name="" id="">
+
+                    <div class="imagem-aluno">
+                        <img src="/images/perfil-sem-foto-220615.png" alt="">
+                    </div>
+                    <div class="texto-img">
+                        <p>Coloque uma foto sua!</p>
+                    </div>
+
+                </div>
+                <div class="btn-group">
+                    <button type="submit">Finalizar Cadastro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<div class="topbar">
+    <div class="topbar-left">
+        <div class="navbar-logo">
+            <a href="#"><img src="" class="logo" alt="" />Minha Logo</a>
+        </div>
+    </div>
+    <nav class="navbar">
+        <button onclick="openNav()" class="sidenav-open">
+      <i class="bx bx-menu"></i>
+    </button>
+        <div class="navbar-menu">
+            <form action="">
+                <div class="menu-icon">
+                    <button type="submit">
+                            <a href="#"><i class="bx bx-search"></i></a>
+                        </button>
+                </div>
+                <input type="text" class="input" placeholder="Pesquisar por conteúdo" />
+            </form>
+            <div class="calendar-icon">
+                <a href="#"><i class="bx bx-calendar"></i></a>
+            </div>
+            <div class="profile-icon">
+                <img src="images/perfil-sem-foto-220615.png" alt="">
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="mySidenav" class="sidenav">
+    <div class="closebtn">
+        <div class="sidenav-text">
+            <span>PRINCIPAL</span>
+        </div>
+        <div>
+            <button onclick="closeNav()"><i class="bx bx-x"></i></button>
+        </div>
+
+    </div>
+    <ul>
+        <li>
+            <a href="home">Página Inicial</a>
+        </li>
+        <li>
+            <a href="atividadesComplementares">Atividades Complementares</a>
+        </li>
+        <li>
+            <a href="extensao">Atividades de Extensão</a>
+        </li>
+
+        <div class="linha"></div>
+        <div class="sidenav-horas">
+            <span>Horas Restantes em ACs: <%= user.horas_acs %> horas</span>
+            <div class="progress-bar"></div>
+        </div>
+        <div class="sidenav-horas">
+            <span>Horas Restantes em AEs: <%= user.horas_aes %> horas</span>
+            <div class="progress-bar"></div>
+        </div>
+        <div class="linha"></div>
+        <div class="sidenav-text">
+            <span>OPÇÕES</span>
+        </div>
+        <li>
+            <a href="perfildoAluno">Perfil do Aluno</a>
+        </li>
+        <li>
+            <a href="/logout" class="btn-sair">Sair</a>
+        </li>
+    </ul>
+</div>

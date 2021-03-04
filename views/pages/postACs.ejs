@@ -1,0 +1,41 @@
+<%- contentFor('main') %>
+
+    <div class="container-post select-espacamento-post">
+        <h1 class="titulo-post">
+            Insira os dados abaixo para realizar o upload dos certificados
+        </h1>
+        <form action="/upload" class="form-modal" method="POST" enctype="multipart/form-data">
+            <label for="">Insira o arquivo abaixo:</label>
+            <input type="file" name="certificados" id="certificados" />
+            <label for="">Insira a quantidade de horas que você deseja
+contabilizar:</label>
+            <input type="number" name="qtd_horas" id="qtd_horas" />
+            <label for="tipo_de_atividade">Indique o tipo de atividade</label>
+            <select name="tipo_de_atividade" id="tipo_de_atividade">
+        <option value="Atividades Complementares">Atividades Complementares</option>
+    </select>
+            <label for="categoria_atividade">Indique a categoria dessa atividade</label>
+            <select name="categoria_atividade" id="categoria_atividade">
+        <option value="Atividades De Ensino e Formação Profisional">Atividades De Ensino e Formação Profisional</option>
+        <option value="Atividades De Pesquisa">Atividades De Pesquisa</option>
+        <option value="Atividades Outros">Atividades Outros</option>
+    </select>
+            <label for="subcategoria_atividade">Insira a subcategoria</label>
+            <select name="subcategoria_atividade" id="subcategoria_atividade">
+        <option value="Disciplinas de Outras Graduação">Disciplinas de Outras Graduação</option>
+        <option value="Monitoria">Monitoria</option>
+        <option value="Cursos de Idioma">Cursos de Idioma</option>
+        <option value="Estagio">Estagio</option>
+        <option value="Representação Estudantil">Representação Estudantil</option>
+        <option value="Bolsista">Bolsista</option>
+        <option value="Eventos Cientificos">Eventos Cientificos</option>
+        <option value="Publicação de Artigo">Publicação de Artigo</option>
+        <option value="Participação em Eventos Esportivos">Participação em Eventos Esportivos</option>
+        <option value="Organização de Eventos Esportivos">Organização de Eventos Esportivos</option>
+        <option value="Participação em Eventos Filantrópicos">Participação em Eventos Filantrópicos</option>
+    </select>
+            <div class="btn-box botao-form-post">
+                <button>ENVIAR</button>
+            </div>
+        </form>
+    </div>
