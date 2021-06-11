@@ -1,10 +1,10 @@
 const Certificados = require('../models/Certificados');
 exports.postACs = function(req, res) {
-    res.render('pages/postACs')
+    res.render('pages/postACs', {layout: 'pages/postACs'})
 }
 
 exports.postAEs = function(req, res) {
-    res.render('pages/postAEs')
+    res.render('pages/postAEs', {layout: 'pages/postAEs'})
 }
 
 exports.getAllACs = function(req, res) {

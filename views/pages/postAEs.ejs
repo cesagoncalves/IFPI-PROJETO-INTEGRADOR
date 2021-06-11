@@ -1,20 +1,31 @@
-<%- contentFor('main') %>
-
-    <div class="container-post select-espacamento-post">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/csspages/post.css">
+    <link rel="stylesheet" href="/Style/style.css" />
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-post select-espacamento-post label-texto caixa-select">
         <h1 class="titulo-post">
             Insira os dados abaixo para realizar o upload dos certificados
         </h1>
         <form action="/upload" class="form-modal" method="POST" enctype="multipart/form-data">
-            <label for="">Insira o arquivo abaixo:</label>
-            <input type="file" name="certificados" id="certificados" />
-            <label for="">Insira a quantidade de horas que você deseja contabilizar:</label>
-            <input type="number" name="qtd_horas" id="qtd_horas" />
-            <label for="tipo_de_atividade">Indique o tipo de atividade</label>
-            <select name="tipo_de_atividade" id="tipo_de_atividade">
-            <option value="Atividades De Extensão">Atividades de Extensão</option>
+            <div class="env-btn">
+                <input type="file" name="certificados" id="certificados" />
+                <label for="certificados">Insira o arquivo</label>
+            </div>
+            <div>
+                <label for="">Insira a quantidade de horas que o certificado contabiliza:</label>
+                <input type="number" name="qtd_horas" id="qtd_horas" />
+            </div>
         </select>
             <label for="categoria_atividade">Indique a categoria dessa atividade</label>
             <select name="categoria_atividade" id="categoria_atividade">
+        <option value="">----- Selecione a categoria -----</option>
         <option value="Programa">Programa</option>
         <option value="Projeto">Projeto</option>
         <option value="Curso">Curso</option>
@@ -25,4 +36,39 @@
                 <button>ENVIAR</button>
             </div>
         </form>
+
+        <div>
+            <table>
+                <tr>
+                    <th>Tipo de atividade</th>
+                    <th>Máxima</th>
+                </tr>
+                <tr>
+                    <td>Projeto</td>
+                    <td>100h</td>
+                </tr>
+                <tr>
+                    <td>Programa</td>
+                    <td>200h</td>
+                </tr>
+                <tr>
+                    <td>Organização de curso</td>
+                    <td>100h</td>
+                </tr>
+                <tr>
+                    <td>Execução de curso</td>
+                    <td>100h</td>
+                </tr>
+                <tr>
+                    <td>Evento</td>
+                    <td>100h</td>
+                </tr>
+                <tr>
+                    <td>Prestação de serviço</td>
+                    <td>100h</td>
+                </tr>
+            </table>
+        </div>
     </div>
+</body>
+</html>

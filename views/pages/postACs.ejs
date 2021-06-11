@@ -1,41 +1,156 @@
-<%- contentFor('main') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/csspages/post.css">
+    <link rel="stylesheet" href="/Style/style.css" />
+    <title>Document</title>
+</head>
+<body>
 
-    <div class="container-post select-espacamento-post">
+    <div class="container-post select-espacamento-post label-texto caixa-select">
         <h1 class="titulo-post">
             Insira os dados abaixo para realizar o upload dos certificados
         </h1>
-        <form action="/upload" class="form-modal" method="POST" enctype="multipart/form-data">
-            <label for="">Insira o arquivo abaixo:</label>
-            <input type="file" name="certificados" id="certificados" />
-            <label for="">Insira a quantidade de horas que você deseja
-contabilizar:</label>
-            <input type="number" name="qtd_horas" id="qtd_horas" />
-            <label for="tipo_de_atividade">Indique o tipo de atividade</label>
-            <select name="tipo_de_atividade" id="tipo_de_atividade">
-        <option value="Atividades Complementares">Atividades Complementares</option>
-    </select>
-            <label for="categoria_atividade">Indique a categoria dessa atividade</label>
-            <select name="categoria_atividade" id="categoria_atividade">
-        <option value="Atividades De Ensino e Formação Profisional">Atividades De Ensino e Formação Profisional</option>
-        <option value="Atividades De Pesquisa">Atividades De Pesquisa</option>
-        <option value="Atividades Outros">Atividades Outros</option>
-    </select>
-            <label for="subcategoria_atividade">Insira a subcategoria</label>
-            <select name="subcategoria_atividade" id="subcategoria_atividade">
-        <option value="Disciplinas de Outras Graduação">Disciplinas de Outras Graduação</option>
-        <option value="Monitoria">Monitoria</option>
-        <option value="Cursos de Idioma">Cursos de Idioma</option>
-        <option value="Estagio">Estagio</option>
-        <option value="Representação Estudantil">Representação Estudantil</option>
-        <option value="Bolsista">Bolsista</option>
-        <option value="Eventos Cientificos">Eventos Cientificos</option>
-        <option value="Publicação de Artigo">Publicação de Artigo</option>
-        <option value="Participação em Eventos Esportivos">Participação em Eventos Esportivos</option>
-        <option value="Organização de Eventos Esportivos">Organização de Eventos Esportivos</option>
-        <option value="Participação em Eventos Filantrópicos">Participação em Eventos Filantrópicos</option>
-    </select>
-            <div class="btn-box botao-form-post">
-                <button>ENVIAR</button>
-            </div>
-        </form>
+        <div>
+            <form name= "formPostACs" action="/upload" class="form-modal" method="POST" enctype="multipart/form-data">
+                <div class="env-btn">
+                    <input type="file" name="certificados" id="certificados" />
+                    <label for="certificados">Insira o arquivo</label>
+                </div>
+                <div>
+                    <label for="">Insira a quantidade de horas que o certificado contabiliza:</label>
+                    <input type="number" name="qtd_horas" id="qtd_horas" />
+                </div>
+                <div>
+                    <label for="categoria_atividade">Indique a categoria dessa atividade:</label>
+                <select name="categoria_atividade" id="categoria_atividade">
+            <option value="">----- Selecione a categoria -----</option>
+            <option value="Atividades De Ensino e Formação Profisional">Atividades De Ensino e Formação Profisional</option>
+            <option value="Atividades De Pesquisa">Atividades De Pesquisa</option>
+            <option value="Atividades Outros">Atividades Outros</option>
+        </select>
+                </div>
+              <div>
+                <label for="subcategoria_atividade">Insira a subcategoria:</label>
+                <select name="subcategoria_atividade" id="subcategoria_atividade">
+            <option value="">----- Selecione a subcategoria -----</option>
+            <option value="Disciplinas de Outras Graduação">Disciplinas de Outras Graduação</option>
+            <option value="Monitoria">Monitoria</option>
+            <option value="Cursos de Idioma">Cursos de Idioma</option>
+            <option value="Estagio">Estagio</option>
+            <option value="Representação Estudantil">Representação Estudantil</option>
+            <option value="Bolsista">Bolsista</option>
+            <option value="Eventos Cientificos">Eventos Cientificos</option>
+            <option value="Publicação de Artigo">Publicação de Artigo</option>
+            <option value="Participação em Eventos Esportivos">Participação em Eventos Esportivos</option>
+            <option value="Organização de Eventos Esportivos">Organização de Eventos Esportivos</option>
+            <option value="Participação em Eventos Filantrópicos">Participação em Eventos Filantrópicos</option>
+        </select>
+              </div>
+
+              <div>
+                  <label id="horasPrevistas"></label>
+              </div>
+                
+                <div class="btn-box botao-form-post">
+                    <button>ENVIAR</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>Atividade</th>
+                    <th>Mínima</th>
+                    <th>Máxima</th>
+                </tr>
+                <tr>
+                    <td>Disciplinas de outras graduação</td>
+                    <td>20h</td>
+                    <td>60h</td>
+                </tr>
+                <tr>
+                    <td>Monitoria</td>
+                    <td>20h</td>
+                    <td>60h</td>
+                </tr>
+                <tr>
+                    <td>Cursos de idioma</td>
+                    <td>15h</td>
+                    <td>30h</td>
+                </tr>
+                <tr>
+                    <td>Estágio</td>
+                    <td>40h</td>
+                    <td>40h</td>
+                </tr>
+                <tr>
+                    <td>Representação Estudantil</td>
+                    <td>10h</td>
+                    <td>20h</td>
+                </tr>
+                <tr>
+                    <td>Bolsista do projeto</td>
+                    <td>20h</td>
+                    <td>40h</td>
+                </tr>
+                <tr>
+                    <td>Colaborador do projeto</td>
+                    <td>10h</td>
+                    <td>30h</td>
+                </tr>
+                <tr>
+                    <td>Participação em evento científico</td>
+                    <td>5h</td>
+                    <td>20h</td>
+                </tr>
+                <tr>
+                    <td>Apresentação em poster</td>
+                    <td>1h</td>
+                    <td>10h</td>
+                </tr>
+                <tr>
+                    <td>Apresentação oral</td>
+                    <td>2h</td>
+                    <td>10h</td>
+                </tr>
+                <tr>
+                    <td>Palestra/Minicurso/Oficina ministrados</td>
+                    <td>8h</td>
+                    <td>16h</td>
+                </tr>
+                <tr>
+                    <td>Publicação de artigo</td>
+                    <td>10h</td>
+                    <td>50h</td>
+                </tr>
+                <tr>
+                    <td>Organização de eventos esportivos e/ou culturais juntos ao IFPI</td>
+                    <td>10h</td>
+                    <td>20h</td>
+                </tr>
+                <tr>
+                    <td>Organização de eventos esportivos e/ou culturais em instituições públicas ou privadas socialmente reconhecidas</td>
+                    <td>5h</td>
+                    <td>10h</td>
+                </tr>
+                <tr>
+                    <td>Participação voluntária em eventos filantrópicos desenvolvidos no âmbito do IFPI</td>
+                    <td>10h</td>
+                    <td>20h</td>
+                </tr>
+                <tr>
+                    <td>Visitas técnicas</td>
+                    <td>2h</td>
+                    <td>12h</td>
+                </tr>
+            </table>
+        </div>
     </div>
+
+</body>
+</html>
+
