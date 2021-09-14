@@ -8,22 +8,6 @@
         <button onclick="openNav()" class="sidenav-open">
       <i class="bx bx-menu"></i>
     </button>
-        <div class="navbar-menu">
-            <form action="">
-                <div class="menu-icon">
-                    <button type="submit">
-                            <a href="#"><i class="bx bx-search"></i></a>
-                        </button>
-                </div>
-                <input type="text" class="input" placeholder="Pesquisar por conteúdo" />
-            </form>
-            <div class="calendar-icon">
-                <a href="#"><i class="bx bx-calendar"></i></a>
-            </div>
-            <div class="profile-icon">
-                <img src="images/perfil-sem-foto-220615.png" alt="">
-            </div>
-        </div>
     </nav>
 </div>
 <div id="mySidenav" class="sidenav">
@@ -46,15 +30,21 @@
         <li>
             <a href="extensao">Atividades de Extensão</a>
         </li>
+        <li>
+            <a href="estatisticas">Estatisticas</a>
+        </li>
 
         <div class="linha"></div>
         <div class="sidenav-horas">
-            <span>Horas Restantes em ACs: <%= user.horas_acs %> horas</span>
-            <div class="progress-bar"></div>
+            <br><br>
+            <span>Horas Restantes em ACs: </span>
+            <p><%= user.horas_acs %> horas</p>
         </div>
+        <br><br>
         <div class="sidenav-horas">
-            <span>Horas Restantes em AEs: <%= user.horas_aes %> horas</span>
-            <div class="progress-bar"></div>
+            <span>Horas Restantes em AEs: </span>
+            <p><%= user.horas_aes %> horas</p>
+            <br><br>
         </div>
         <div class="linha"></div>
         <div class="sidenav-text">

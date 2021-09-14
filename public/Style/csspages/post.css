@@ -2,34 +2,53 @@
     display: flex;
     flex-direction: column;
     width: 100vw;
-    height: 90vh;
     justify-content: center;
     align-items: center;
 }
 
-.select-espacamento-post select, input {
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.select-espacamento-post select,
+input {
     margin-bottom: 1.2rem;
     margin-left: 0.4rem;
     height: 30px;
 }
 
-.caixa-select select, option {
+.caixa-select select,
+option {
     height: 30px;
     font-size: 15px;
 }
 
-.env-btn input[type="file"]
-{
+.env-btn input[type="file"] {
     display: none;
 }
 
+.env-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.esconder_tipo {
+    display: none;
+}
 
 .env-btn label {
     padding: 10px 10px;
-    border-radius: 5px;
-    width: 180px;
-    background: var(--color-green);
-    color: #FFF;
+    border-radius: 10px;
+    width: 200px;
+    background: #FFF;
+    color: black;
+    border: solid 2px black;
     font-size: 200px;
     display: block;
     margin-top: 10px;
@@ -46,12 +65,12 @@
 .titulo-post {
     font-weight: bold;
     font-size: xx-large;
-    margin-top: 18rem;
+    margin-top: 5rem;
     margin-bottom: 2rem;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.label-texto label{
+.label-texto label {
     font-size: large;
 }
 
@@ -61,6 +80,13 @@
     justify-content: center;
 }
 
+.form-modal select {
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    border: 1px solid black;
+}
+
 .btn-box button {
     background-color: var(--color-green);
     font-weight: 600;
@@ -68,7 +94,7 @@
     color: #ffffff;
     padding: 12px 38px;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     outline: none;
     cursor: pointer;
     margin-bottom: 20px;
@@ -80,15 +106,39 @@
     background-color: var(--color-greenhover);
 }
 
-table{
-    border-collapse: collapse;
-    width: 100%;
-    
-}
-
-td, th {
+td,
+th {
     border: 1px solid black;
     font-size: 16px;
     padding: 6px;
     text-align: center;
+}
+
+.input_periodo input{
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 25%;
+    text-align: center;
+}
+
+.input_horas input{
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 10%;
+    text-align: center;
+}
+
+.text_descricao textarea{
+    border-radius: 8px;
+    border: 1px solid black;
+    resize: none;
+
+}
+
+.container_table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }

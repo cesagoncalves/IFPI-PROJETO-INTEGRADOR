@@ -2,7 +2,7 @@
     <section class="atividades">
         <div class="atividades-de-extensao fonte caixa">
             <div class="container-perfilDoAluno">
-                <form action="/perfilDoAluno.html" method="POST">
+                <form action="/alterarDados" method="POST">
                     <div class="lista-atividades text-box">
 
                         <div class="atividades-titulos">
@@ -10,9 +10,6 @@
 
                         </div>
 
-                        <div class="imagem-aluno">
-                            <img src="/images/perfil-sem-foto-220615.png" alt="" title="Troque sua foto de perfil!">
-                        </div>
                         <div>
                             <label for="">Nome</label>
                             <input type="text" name="nome" id="nome" value="<%= user.nome %>">
@@ -31,32 +28,28 @@
                         </div>
                         <div>
                             <label for="">Data de Nascimento </label>
-                            <input type="date" name="dataNascimento" id="dataNascimento" value="<%= user.nascimento %> "></div>
-                        <% if (user) { %>
-                            <a href="#">
-                                <%= user.nascimento %>
-                            </a>
-                            <% } %>
-                                <div>
-                                    <label for="">Telefone </label>
-                                    <input type="text" name="telefone" id="telefone" value=" <%= user.telefone %>">
-                                </div>
-                                <br>
-                                <div>
-                                    <label for="">Instituição </label>
-                                    <input type="text" name="instituicao" id="instituicao" value=" <%= user.instituicao %>"></div>
-                                <div>
-                                    <label for="">Cidade </label>
-                                    <input type="text" name="cidade" id="cidade" value=" <%= user.cidade %>">
-                                </div>
-                                <div>
-                                    <label for="">Senha </label>
-                                    <input type="password" name="senha" id="senha" value="<%= user.senha %>">
-                                </div>
-                                <br> <br>
-                                <div class="btn-save">
-                                    <button type="submit">SALVAR ALTERAÇÕES</button>
-                                </div>
+                            <input type="date" name="dataNascimento" id="dataNascimento" value="<%= user.nascimento %>"></div>
+
+                        <div>
+                            <label for="">Telefone </label>
+                            <input type="text" name="telefone" id="telefone" value=" <%= user.telefone %>">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="">Instituição </label>
+                            <input type="text" name="instituicao" id="instituicao" value=" <%= user.instituicao %>"></div>
+                        <div>
+                            <label for="">Cidade </label>
+                            <input type="text" name="cidade" id="cidade" value=" <%= user.cidade %>">
+                        </div>
+                        <div>
+                            <label for="">Senha </label>
+                            <input type="password" name="senha" id="senha" value="<%= user.senha %>">
+                        </div>
+                        <br> <br>
+                        <div class="btn-save">
+                            <button type="submit">SALVAR ALTERAÇÕES</button>
+                        </div>
                 </form>
                 </div>
             </div>

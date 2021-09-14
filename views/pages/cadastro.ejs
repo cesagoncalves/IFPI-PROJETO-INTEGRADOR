@@ -19,17 +19,39 @@
             <h1>Cadastro</h1>
             <p>Preencha com seus dados o formulario abaixo para realizar seu cadastro</p>
             <form action="/cadastrar" method="POST">
-                <div class="input-group">
+                <div class="input-group caixa-select">
                     <label for="">Nome</label>
                     <input type="text" name="nome" id="">
                     <label for="">Sobrenome</label>
                     <input type="text" name="sobrenome" id="">
+                    <div class="select-group">
+                        <label for="">Tipo de Curso</label>
+                        <br>
+                        <select name="tipo_curso" id="tipo_curso">
+                            <% cursos_recuperado.forEach(function(cursos_recuperado){ %>
+                                <option value="<%= cursos_recuperado.id_tipo_curso%>" id="">
+                                    <%= cursos_recuperado.tipo_curso%>
+                                </option>
+                                <% }); %>
+                        </select>
+                        <br>
+                        <label for="">Curso</label>
+                        <br>
+                        <select name="curso" id="curso" onchange="">
+                            <% cursos_recuperado.forEach(function(cursos_recuperado){ %>
+                                <option value="<%= cursos_recuperado.id_cursos%>" id="">
+                                    <%= cursos_recuperado.curso%>
+                                </option>
+                                <% }); %>
+                        </select>
+                    </div>
+                    <br>
                     <label for="">E-mail</label>
                     <input type="email" name="email" id="">
                     <label for="">CPF</label>
-                    <input type="text" name="cpf" id="">
+                    <input type="text" name="cpf" id="cpf ">
                     <label for="">Data de Nascimento</label>
-                    <input type="date" name="nascimento" id="">
+                    <input type="text" value="" name="nascimento" id="nascimento">
                     <label for="">Telefone</label>
                     <input type="text" name="telefone" id="">
                     <label for="">Instituição</label>
@@ -41,13 +63,6 @@
                     <label for="">Repita a Senha</label>
                     <input type="password" name="" id="">
 
-                    <div class="imagem-aluno">
-                        <img src="/images/perfil-sem-foto-220615.png" alt="">
-                    </div>
-                    <div class="texto-img">
-                        <p>Coloque uma foto sua!</p>
-                    </div>
-
                 </div>
                 <div class="btn-group">
                     <button type="submit">Finalizar Cadastro</button>
@@ -55,6 +70,18 @@
             </form>
         </div>
     </div>
+
+    <script type="text/javascript">
+        var select = document.getElementById('tipo_curso');
+        var value = select.options[select.selectedIndex].value;
+        console.log(value);
+        console.log(data)
+    </script>
+
 </body>
+
+
+
+<link rel="stylesheet" href="/public/js/javascript.js">
 
 </html>

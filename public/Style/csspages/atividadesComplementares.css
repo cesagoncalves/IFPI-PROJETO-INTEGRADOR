@@ -104,12 +104,23 @@
 
 .sidenav-horas span {
     text-transform: uppercase;
+    text-align: center;
     letter-spacing: 2px;
     font-size: 12px;
-    color: var(--color-greentext);
+    color: black;
     font-weight: 600;
-    margin-bottom: 16px;
-    margin-left: 25px;
+    margin-bottom:16px;
+    margin-left: 60px;
+}
+
+.sidenav-horas p {
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 15px;
+    color: green;
+    font-weight: 700;
+    margin-bottom: 16px;   
 }
 
 .sidenav-horas .progress-bar {
@@ -125,7 +136,6 @@
 
 .sidenav-horas .progress-bar::before {
     content: "";
-    width: 25%;
     height: 6px;
     border-radius: 1px;
     background-color: #54CC96;
@@ -469,12 +479,24 @@
 }
 
 .text-documents {
-    height: 40px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.text-documents span{
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
 .text-documents i {
     margin-right: 14px;
+}
+
+.text-documents a{
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--color-green);
+    font-weight: bold;
 }

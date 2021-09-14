@@ -2,7 +2,14 @@ const User = require('../models/User')
 const Certificados = require('../models/Certificados')
 
 exports.cadastro = function(req, res) {
-    res.render('pages/cadastro', { layout: 'pages/cadastro' })
+    let user = new User ()
+    user.recuperarCursos()
+    .then(function(cursos_recuperado){
+        res.render('pages/cadastro', { cursos_recuperados: cursos_recuperado , layout: 'pages/cadastro' })
+    })
+    .catch(function(err){
+        res.send(err)
+    })
 }
 
 exports.login_form = function(req, res) {
@@ -20,6 +27,7 @@ exports.login = function(req, res) {
             req.session.user = {
                 nome: usuarioRecuperado.nome,
                 sobrenome: usuarioRecuperado.sobrenome,
+                curso: usuarioRecuperado.curso,
                 email: user.data.email,
                 cpf: usuarioRecuperado.cpf,
                 telefone: usuarioRecuperado.telefone,
@@ -30,6 +38,7 @@ exports.login = function(req, res) {
                 horas_acs: usuarioRecuperado.horas_acs,
                 horas_aes: usuarioRecuperado.horas_aes,
             }
+
             req.session.save(function() {
                 res.redirect('/home')
             })
@@ -76,6 +85,10 @@ exports.extensao = function(req, res) {
     res.render('pages/extensao')
 }
 
+exports.estatisticas = function(req, res) {
+    res.render('pages/estatisticas')
+}
+
 exports.perfilDoAluno = function(req, res) {
     if (req.session.user) {
         res.render('pages/perfilDoAluno')
@@ -83,12 +96,38 @@ exports.perfilDoAluno = function(req, res) {
         res.render('pages/perfilDoAluno')
     }
 }
+exports.alterarDados = function(req, res) {
+    let user = new User(req.body);
+    user
+        .alterarDados(),user.readByEmail()
+        .then(function(result) {
+            req.session.user = {
+                nome: usuarioRecuperado.nome,
+                sobrenome: usuarioRecuperado.sobrenome,
+                curso: usuarioRecuperado.curso,
+                email: user.data.email,
+                cpf: usuarioRecuperado.cpf,
+                telefone: usuarioRecuperado.telefone,
+                instituicao: usuarioRecuperado.instituicao,
+                cidade: usuarioRecuperado.cidade,
+                senha: user.data.senha,
+                nascimento: usuarioRecuperado.nascimento,
+                horas_acs: usuarioRecuperado.horas_acs,
+                horas_aes: usuarioRecuperado.horas_aes,
+            }
+            res.redirect('/perfilDoAluno')
+        })
+        .catch(function(err) {
+            res.send(err)
+        })
+}
+
+
 
 exports.cadastrar = function(req, res) {
     // console.log(req.body);
     let user = new User(req.body);
-    user
-        .create()
+    user.create()
         .then(function(result) {
             res.render('pages/login', { layout: 'pages/login' });
         })

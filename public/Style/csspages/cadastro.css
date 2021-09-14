@@ -49,8 +49,21 @@
     justify-content: center;
 }
 
-.form .input-group input {
+.form .input-group input{
     padding: 8px 16px;
+    margin: 8px 0;
+    background-color: rgba(37, 148, 79, 0.178);
+    color: var(--color-text-secondary-light);
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid rgba(37, 148, 79, 0.274);
+    outline: none;
+    font-size: 16px;
+}
+
+.form .select-group select {
+    width: 100%;
+    height: 40px;
     margin: 8px 0;
     background-color: rgba(37, 148, 79, 0.178);
     color: var(--color-text-secondary-light);
@@ -113,6 +126,12 @@
     font-size: large;
     text-align: center;
     padding-top: 1rem;
+}
+
+.caixa-select select,
+option {
+    height: 30px;
+    font-size: 15px;
 }
 
 @media screen and (min-width:320px) and (max-width:480px) {
