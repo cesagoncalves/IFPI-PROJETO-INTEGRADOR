@@ -8,8 +8,6 @@ const uuid = require("uuid").v4
 const pgSession = require("connect-pg-simple")(session)
 const router = require("./router")
 
-
-
 let sessionOptions = session({
     store: new pgSession({
         pool: pool,
@@ -26,7 +24,7 @@ let sessionOptions = session({
 
 app.use(sessionOptions)
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     res.locals.user = req.session.user
     next()
 })
