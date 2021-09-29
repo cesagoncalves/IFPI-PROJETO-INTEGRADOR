@@ -6,7 +6,7 @@ var acc_estatisticas_button = document.getElementsByClassName("accordion-button"
 var i;
 
 for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
+    acc[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
         if (panel.style.display === "block") {
@@ -18,7 +18,7 @@ for (i = 0; i < acc.length; i++) {
 }
 
 for (i = 0; i < acc.length; i++) {
-    acc2[i].addEventListener("click", function() {
+    acc2[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
         if (panel.style.display === "none") {
@@ -32,7 +32,7 @@ for (i = 0; i < acc.length; i++) {
 
 
 for (i = 0; i < acc_home.length; i++) {
-    acc_home[i].addEventListener("click", function() {
+    acc_home[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
         if (panel.style.display === "block") {
@@ -44,7 +44,7 @@ for (i = 0; i < acc_home.length; i++) {
 }
 
 for (i = 0; i < acc_estatisticas.length; i++) {
-    acc_estatisticas[i].addEventListener("click", function() {
+    acc_estatisticas[i].addEventListener("click", function () {
         this.classList.toggle("active");
         var panel = this.nextElementSibling;
         if (panel.style.display === "block") {
