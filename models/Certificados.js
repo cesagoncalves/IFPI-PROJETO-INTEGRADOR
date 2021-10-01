@@ -21,6 +21,43 @@ Certificados.prototype.create = function () {
     });
 }
 
+Certificados.prototype.readCatAcs = function () {
+    const consulta = 'select * from acs'
+    const values = []
+    return new Promise((resolve, reject) => {
+        pool.query(consulta, values, (error, results) => {
+            if (error) {
+                reject("Erro ao recuperar as Categorias")
+            } else {
+                categorias_recuperadas_acs = results.rows
+                console.log(categorias_recuperadas_acs)
+                // resolve("Usuário inserido com sucesso!")
+                resolve(categorias_recuperadas_acs)
+            }
+        });
+    });
+};
+
+Certificados.prototype.readCatAcsSubCategoria = function (acs) {
+
+    const consulta = 'SELECT * from acs_subcategorias inner join acs' + 
+    ' ON (acs_subcategorias.id_tipo_atividade_acs_fk = acs.id_tipo_atividade_acs)' + 
+    `WHERE acs.id_tipo_atividade_acs = ${acs}`
+    console.log(consulta)
+    const values = []
+    return new Promise((resolve, reject) => {
+        pool.query(consulta, values, (error, results) => {
+            if (error) {
+                reject("Erro ao retornar cursos de um determinado tipo!")
+            } else {
+                subcategoria_recuperada = results.rows
+                console.log(subcategoria_recuperada)
+                resolve(subcategoria_recuperada)
+            }
+        });
+    });
+};
+
 Certificados.prototype.readAllACs = function () {
     const consulta = "SELECT * FROM certificados u where u.email_fk=$1 and u.tipo_de_atividade='Atividades Complementares'";
     const values = [this.email]
@@ -50,7 +87,6 @@ Certificados.prototype.readAllAEs = function () {
         });
     });
 }
-
 
 Certificados.prototype.readAll = function () {
     const consulta = "SELECT * FROM certificados u where u.email_fk=$1";
@@ -184,18 +220,6 @@ Certificados.prototype.readCatAcs = function () {
     })
 }
 
-Certificados.prototype.readCatAcsSubCategoria = function () {
-    const consulta = "SELECT * from acs_categoria"
-    return new Promise((resolve, reject) => {
-        pool.query(consulta, (error, results) => {
-            if (error) {
-                reject("Não foi possivel ler as categorias" + error)
-            } else {
-                resultado_categoria = results.rows
-                resolve(resultado_categoria)
-            }
-        })
-    })
-}
+
 
 module.exports = Certificados

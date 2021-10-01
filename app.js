@@ -2,9 +2,6 @@ const pool = require("./db")
 const express = require("express")
 const app = express();
 const session = require("express-session")
-const multer = require("multer")
-const moment = require("moment")
-const uuid = require("uuid").v4
 const pgSession = require("connect-pg-simple")(session)
 const router = require("./router")
 
