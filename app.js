@@ -1,12 +1,11 @@
+require("dotenv").config
 const pool = require("./db")
 const express = require("express")
 const app = express();
 const session = require("express-session")
-const multer = require("multer")
-const moment = require("moment")
-const uuid = require("uuid").v4
 const pgSession = require("connect-pg-simple")(session)
 const router = require("./router")
+const path = require("path")
 
 let sessionOptions = session({
     store: new pgSession({
@@ -36,11 +35,11 @@ app.set("views", "views")
 app.set("view engine", "ejs")
 app.use(expressEjsLayouts)
 
-app.use(express.urlencoded({ extended: true }))
-app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
-app.use('/', router)
+app.use('/', router);
 
 
 app.listen(process.env.APP_PORT, () => {

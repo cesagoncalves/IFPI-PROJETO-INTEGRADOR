@@ -19,6 +19,7 @@ router.get('/cadastro', userController.cadastro)
  * para consulta -> "id_tipo_curso_fk" que será lançado com FETCH
  */
 router.get('/cursos_json/:id_tipo_curso_fk', userController.cursos_json)
+router.get('/subcategorias_json/:id_tipo_atividade_acs_fk', postController.subcategorias_json)
 
 router.get('/esqueciASenha', userController.esqueciASenha)
 router.get('/perfilDoAluno', userController.mustBeLoggedIn, userController.perfilDoAluno)

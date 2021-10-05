@@ -57,24 +57,6 @@ User.prototype.create = function () {
 
 };
 
-// User.prototype.recuperarTipoCursos = function() {
-//     const consulta = 'select * from cursos inner join tipo_curso on (cursos.id_tipo_curso_fk = tipo_curso.id_tipo_curso)'
-//     const values = []
-//     return new Promise((resolve, reject) => {
-//         pool.query(consulta, values, (error, results) => {
-//             if (error) {
-//                 reject("Erro ao cadastrar o aluno!")
-//             } else {
-//                 cursos_recuperado = results.rows
-//                 console.log(cursos_recuperado)
-//                 resolve("Usuário inserido com sucesso!")
-//             }
-//         });
-//     });
-
-// };
-
-// select * from cursos inner join tipo_curso on (cursos.id_tipo_curso_fk = tipo_curso.id_tipo_curso)'
 User.prototype.recuperarTiposCursos = function () {
     const consulta = 'select * from tipo_curso'
     const values = []

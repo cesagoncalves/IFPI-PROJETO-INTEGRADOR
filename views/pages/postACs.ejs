@@ -39,30 +39,20 @@
                 </div>
                 <div>
                     <br>
-                    <label for="categoria_atividade">Indique o tipo de atividade:</label>
+                    <label for="">Indique o tipo de atividade:</label>
                     <select name="categoria_atividade" id="categoria_atividade">
-                        <option value="">----- Selecione a categoria -----</option>
-                        <option value="Atividades De Ensino e Formação Profisional">Atividades De Ensino e Formação
-                            Profisional</option>
-                        <option value="Atividades De Pesquisa">Atividades De Pesquisa</option>
-                        <option value="Atividades Outros">Atividades Outros</option>
+                        <option value="" selected disabled hidden>----- Selecione a categoria -----</option>
+                        <% categorias_recuperadas_acs.forEach(categorias_recuperadas_acs => { %>
+                            <option value="<%= categorias_recuperadas_acs.id_tipo_atividade_acs%>" id="<%= categorias_recuperadas_acs.id_tipo_atividade_acs%>">
+                                <%= categorias_recuperadas_acs.tipo_atividade%>
+                            </option>
+                            <% }) %>
                     </select>
                 </div>
                 <div>
-                    <label for="subcategoria_atividade">Selecione a ação:</label>
+                    <label for="">Selecione a ação:</label>
                     <select name="subcategoria_atividade" id="subcategoria_atividade">
-                        <option value="">----- Selecione a subcategoria -----</option>
-                        <option value="Disciplinas de Outras Graduação">Disciplinas de Outras Graduação</option>
-                        <option value="Monitoria">Monitoria</option>
-                        <option value="Cursos de Idioma">Cursos de Idioma</option>
-                        <option value="Estagio">Estagio</option>
-                        <option value="Representação Estudantil">Representação Estudantil</option>
-                        <option value="Bolsista">Bolsista</option>
-                        <option value="Eventos Cientificos">Eventos Cientificos</option>
-                        <option value="Publicação de Artigo">Publicação de Artigo</option>
-                        <option value="Participação em Eventos Esportivos">Participação em Eventos Esportivos</option>
-                        <option value="Organização de Eventos Esportivos">Organização de Eventos Esportivos</option>
-                        <option value="Participação em Eventos Filantrópicos">Participação em Eventos Filantrópicos
+                        <option value="" selected disabled hidden>----- Selecione a subcategoria -----</option>
                         </option>
                     </select>
                 </div>
@@ -172,6 +162,40 @@
     </div>
     </div>
 
+    <script>
+        const select_categoriaAtividade = document.getElementById('categoria_atividade');
+        const select_subCategoriaAtividade = document.getElementById('subcategoria_atividade');
+
+        select_categoriaAtividade.addEventListener('change',(e)=> {
+            let value = select_categoriaAtividade.value;
+            console.log(value)
+
+            while(select_subCategoriaAtividade.firstChild) {
+                select_subCategoriaAtividade.removeChild(select_subCategoriaAtividade.firstChild)
+            }
+
+            fetch(`/subcategorias_json/${value}`)
+            .then(response =>{
+                response.json().then(data =>{
+                    data.subcategorias_recuperadas.forEach(item =>{
+                        let option = document.createElement('option');
+
+                        option.innerHTML= item.subcategoria_atividade
+                            option.value = item.subcategoria_atividade
+                            option.id = item.id_subcategoria_atividade
+
+                           
+                            select_subCategoriaAtividade.appendChild(option)    
+                    })
+                })   
+            })
+            .catch(err => console.log(err));
+        });
+
+        select_subCategoriaAtividade.addEventListener('change', e => {
+            console.log(select_subCategoriaAtividade.value)
+        })
+    </script>
 
 </body>
 

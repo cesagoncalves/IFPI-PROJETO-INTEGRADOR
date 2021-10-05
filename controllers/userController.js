@@ -1,5 +1,4 @@
 const User = require('../models/User')
-const Certificados = require('../models/Certificados')
 
 exports.cadastro = function (req, res) {
     let user = new User()
@@ -16,7 +15,6 @@ exports.cursos_json = function (req, res) {
     let user = new User()
     user.recuperarCursos(req.params.id_tipo_curso_fk)
         .then(function (cursos_recuperados) {
-            // res.render('pages/cadastro', { tipos_cursos_recuperado: cursos_recuperados, layout: 'pages/cadastro' })
             res.json({ cursos_recuperados: cursos_recuperados })
         })
         .catch(function (err) {
@@ -132,7 +130,6 @@ exports.alterarDados = function (req, res) {
 }
 
 exports.cadastrar = function (req, res) {
-    // console.log(req.body);
     let user = new User(req.body);
     user.create()
         .then(function (result) {
