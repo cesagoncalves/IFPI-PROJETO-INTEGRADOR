@@ -1,11 +1,30 @@
 const Certificados = require('../models/Certificados');
 
 exports.postACs = function (req, res) {
-    res.render('pages/postACs', { layout: 'pages/postACs' })
+    let resultado_categoria = new Certificados()
+    resultado_categoria.readCatAcs()
+    .then(function (categorias_recuperadas_acs){
+        res.render('pages/postACs', { categorias_recuperadas_acs : categorias_recuperadas_acs , layout: 'pages/postACs' })
+    }).catch(function (err){
+        res.send(err);
+    })
+   
 };
 
+exports.subcategorias_json = function (req, res) {
+    let certificado = new Certificados()
+    certificado.readCatAcsSubCategoria(req.params.id_tipo_atividade_acs_fk)
+        .then(function (subcategorias_recuperadas) {
+            res.json({ subcategorias_recuperadas: subcategorias_recuperadas })
+        })
+        .catch(function (err) {
+            res.send(err)
+        })
+}
+
+
 exports.postAEs = function (req, res) {
-    let resultado_categoria = new Certificados(null, null, null)
+    let resultado_categoria = new Certificados()
     resultado_categoria.readCatAes()
         .then(function (resultado_categoria) {
             res.render('pages/postAEs', { resultado_categorias: resultado_categoria, layout: 'pages/postAEs' })
@@ -13,6 +32,8 @@ exports.postAEs = function (req, res) {
             res.send(err);
         })
 };
+
+
 
 exports.getAllACs = function (req, res) {
     let certificado = new Certificados(req.file, null, req.session.user.email)
@@ -75,10 +96,10 @@ exports.getByIdAe = function (req, res) {
 
 
 exports.apagarCertificadoACs = function (req, res) {
-    const id = req.params.id_certificado
+    const nome = req.params.nome
     let certificado = new Certificados(null, null, req.session.user.email)
     certificado
-        .removerHorasACs(id).then(certificado.apagar(id))
+        .removerHorasACs(nome).then(certificado.apagarAws(nome)).then(certificado.apagar(nome))
         .then(function (resultado) {
             res.redirect('/home')
         })
@@ -88,10 +109,10 @@ exports.apagarCertificadoACs = function (req, res) {
 };
 
 exports.apagarCertificadoAEs = function (req, res) {
-    const id = req.params.id_certificado
+    const nome = req.params.nome
     let certificado = new Certificados(null, null, req.session.user.email)
     certificado
-        .removerHorasAEs(id).then(certificado.apagar(id))
+        .removerHorasAEs(nome).then(certificado.apagarAws(nome)).then(certificado.apagar(nome))
         .then(function (resultado) {
             res.redirect('/home')
         })

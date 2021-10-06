@@ -1,4 +1,6 @@
 const pool = require("../db")
+const aws = require('aws-sdk')
+const s3 = new aws.S3()
 
 let Certificados = function (data, data2, email) {
     this.data = data
@@ -9,7 +11,7 @@ let Certificados = function (data, data2, email) {
 
 Certificados.prototype.create = function () {
     const consulta = 'INSERT INTO certificados (tipo_de_atividade,categoria_atividade,subcategoria_atividade,qtd_horas,nome,tamanho,chave,url, email_fk) values ($1,$2,$3,$4,$5,$6,$7,$8,$9)'
-    const values = [this.data2.tipo_de_atividade, this.data2.categoria_atividade, this.data2.subcategoria_atividade, this.data2.qtd_horas, this.data.filename, this.data.size, this.data.originalname, this.data.path, this.email]
+    const values = [this.data2.tipo_de_atividade, this.data2.categoria_atividade, this.data2.subcategoria_atividade, this.data2.qtd_horas, this.data.key, this.data.size, this.data.originalname, this.data.location, this.email]
     return new Promise((resolve, reject) => {
         pool.query(consulta, values, (error, results) => {
             if (error) {
@@ -67,6 +69,7 @@ Certificados.prototype.readAllACs = function () {
                 reject("Erro ao recuperar os certificados!" + error)
             } else {
                 resultado = results.rows
+                
                 resolve(resultado);
             }
         });
@@ -119,18 +122,25 @@ Certificados.prototype.readOneById = function (id_certificado) {
     });
 }
 
-Certificados.prototype.apagar = function (id_certificado) {
-    const consulta = "DELETE FROM certificados u where u.id_certificado=$1 and u.email_fk=$2";
-    const values = [id_certificado, this.email]
+Certificados.prototype.apagar = function (nome) {
+    const consulta = "DELETE FROM certificados u where u.nome=$1 and u.email_fk=$2";
+    const values = [nome, this.email]
     return new Promise((resolve, reject) => {
         pool.query(consulta, values, (error, results) => {
             if (error) {
                 reject("Não foi possivel apagar o certificado!" + error)
             } else {
-                resolve("Post deletado com sucesso")
+                resolve("Certificados apagados com sucesso")
             }
         });
     });
+}
+
+Certificados.prototype.apagarAws = function (nome) {
+    s3.deleteObject({
+        Bucket: 'upload-server-ifpi',
+        Key: nome,
+    }).promise()
 }
 
 Certificados.prototype.contabilizarHorasACs = function () {
@@ -164,9 +174,9 @@ Certificados.prototype.contabilizarHorasAEs = function () {
     });
 }
 
-Certificados.prototype.removerHorasACs = function (id_certificado) {
-    const consulta = "UPDATE users SET horas_acs = horas_acs + qtd_horas FROM certificados u where u.id_certificado = $1 AND email = $2"
-    const values = [id_certificado, this.email]
+Certificados.prototype.removerHorasACs = function (nome) {
+    const consulta = "UPDATE users SET horas_acs = horas_acs + qtd_horas FROM certificados u where u.nome = $1 AND email = $2"
+    const values = [nome, this.email]
     return new Promise((resolve, reject) => {
         pool.query(consulta, values, (error, results) => {
             if (error) {
@@ -178,9 +188,9 @@ Certificados.prototype.removerHorasACs = function (id_certificado) {
     });
 }
 
-Certificados.prototype.removerHorasAEs = function (id_certificado) {
-    const consulta = "UPDATE users SET horas_aes = horas_aes + qtd_horas FROM certificados u where u.id_certificado = $1 AND email = $2"
-    const values = [id_certificado, this.email]
+Certificados.prototype.removerHorasAEs = function (nome) {
+    const consulta = "UPDATE users SET horas_aes = horas_aes + qtd_horas FROM certificados u where u.nome = $1 AND email = $2"
+    const values = [nome, this.email]
     return new Promise((resolve, reject) => {
         pool.query(consulta, values, (error, results) => {
             if (error) {

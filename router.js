@@ -31,15 +31,17 @@ router.get('/estatisticas', userController.mustBeLoggedIn, postController.pegarA
 //roteamento de post
 router.get('/postACs', userController.mustBeLoggedIn, postController.postACs)
 router.get('/postAEs', userController.mustBeLoggedIn, postController.postAEs)
-router.get('/apagarCertificadoACs/:id_certificado', userController.mustBeLoggedIn, postController.apagarCertificadoACs)
-router.get('/apagarCertificadoAEs/:id_certificado', userController.mustBeLoggedIn, postController.apagarCertificadoAEs)
+router.get('/apagarCertificadoACs/:nome', userController.mustBeLoggedIn, postController.apagarCertificadoACs)
+router.get('/apagarCertificadoAEs/:nome', userController.mustBeLoggedIn, postController.apagarCertificadoAEs)
 
 router.post('/uploadACs', multer(multerConfig).single('certificados'), (req, res) => {
+    
     let certificados = new Certificados(req.file, req.body, req.session.user.email)
     certificados
         .create().then(certificados.contabilizarHorasACs())
         .then(function (result) {
-            res.render('pages/home')
+            console.log(req.file)
+            res.redirect('atividadesComplementares')
         })
         .catch(function (err) {
             res.send('err')
@@ -51,8 +53,8 @@ router.post('/uploadAEs', multer(multerConfig).single('certificados'), (req, res
     certificados
         .create().then(certificados.contabilizarHorasAEs())
         .then(function (result) {
-
-            res.render('pages/home')
+            
+            res.redirect('extensao')
         })
         .catch(function (err) {
             res.send('err')
